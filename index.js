@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const mongoose = require("mongoose")
+const userRoute = require("./routes/user")
 
 //conncting yo server
  mongoose.connect("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5")
@@ -15,3 +16,5 @@ app.get("/",(req,res)=>{
 app.listen(port,()=>{
     console.log("server connected to port"+ port)
 })
+
+app.use("/user",userRoute);

@@ -3,6 +3,10 @@ const userModel = require("../models/user")
 const router = Router();
 
 
+
+router.get("/",(req,res)=>{
+    return res.render("profile");
+})
 router.get("/signup",(req,res)=>{
     return res.render("signup");
 })
@@ -16,3 +20,5 @@ router.post("/signup",async(req,res)=>{
      })
      return res.redirect("/");
 })
+
+module.exports = router;
