@@ -6,20 +6,19 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema ({
     userName : {
         type: String,
-        required : true
+
     },
     UserEmail :  {
         type : String,
-        required : true,
+       
         unique : true,
     },
     gender : {
         type : String,
-        required : true,
     } ,
     password : {
         type : String,
-        required : true,
+        
     },
     profileImage :{
         type : String,
