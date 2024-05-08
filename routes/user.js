@@ -20,5 +20,21 @@ router.post("/signup",async(req,res)=>{
      })
      return res.redirect("/");
 })
-
+router.get("/login",(req,res)=>{
+    res.render("login")
+ })
+ router.post("/login",async(req,res)=>{
+    const {email , password} = req.body;
+    try{
+    const token = await User.matchUser(email,password)
+     
+    res.cookie("token",token).redirect("/");
+    }
+    catch(err){
+     res.render("login",{
+         error : "incorrect email or password!",
+     })
+    }
+})
+    
 module.exports = router;
