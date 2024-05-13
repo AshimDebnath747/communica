@@ -6,8 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <p>if not logged in it will redirect to login page.that means it will check for cookie in my browser.</p>
-    </div>
+    <p>create your own community:</p>
+   <button>create community</button>
+   <div>
+    <ul>
+     <% allCommunity.forEach(community => { %>
+        <a href=""><%= community.name %></a>
+   <%  }); %>
+    </ul>
+   </div>
 </body>
 </html>
