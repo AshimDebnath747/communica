@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>create new community</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .container {
+            display: flexbox;
+            background-color: aquamarine;
+            height: 459px;
+            width: 391px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: block;
+            align-items: center;
+            justify-content: center;
+             
+        }
+
+        .container>*{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .container>input{
+            
+    height: 19px;
+    width: 215px;
+
+        }
+
+        .submit{
+            height: 30px;
+            border: 3px solid rgb(46, 104, 41);
+            border-radius: 10px;
+            background-color: rgb(223, 221, 138);
+        }
+  
+    </style>
+</head>
+
+<body>
+    <nav></nav>
+    <div class="container">
+        <h3>Enter community name</h3>
+        <input type="text" name="name" id="" maxlength="10">
+        <h3>Description</h3>
+        <form>
+            <label for="limitedTextarea">Enter Text (alphabets and spaces only, max 50 characters):</label>
+            <textarea id="limitedTextarea" rows="4" cols="50" oninput="validateTextarea(this)" maxlength="50"></textarea>
+        </form>
+    
+        <script>
+            function validateTextarea(textarea) {
+                // Remove non-alphabetic characters except spaces
+                textarea.value = textarea.value.replace(/[^a-zA-Z\s]/g, '');
+            
+             // Limit the number of characters to 100
+             if (textarea.value.length > 100) {
+                textarea.value = textarea.value.substring(0, 100);
+            }
+            // Update character count
+            document.getElementById('charCount').textContent = textarea.value.length + "/100 characters";
+        }
+        </script>
+        <button class="submit">create</button>
+    </div>
+
+</body>
+
+</html>
