@@ -11,7 +11,7 @@
             display: flexbox;
             background-color: aquamarine;
             height: 459px;
-            width: 391px;
+            width: 425px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -20,12 +20,18 @@
             display: block;
             align-items: center;
             justify-content: center;
-             
+            transition: 0.7s ease; 
+             border-radius: 4%;
+        }
+        .container:hover{
+            box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.5);
+            transition: 0.7s ease; 
         }
 
         .container>*{
             margin-top: 20px;
             margin-bottom: 20px;
+            
         }
         .container>input{
             
@@ -35,11 +41,22 @@
         }
 
         .submit{
-            height: 30px;
-            border: 3px solid rgb(46, 104, 41);
-            border-radius: 10px;
-            background-color: rgb(223, 221, 138);
-        }
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 5px 10px 3px rgba(0, 0, 0, 0.5);
+}
+
+.submit:hover {
+    background-color: #0056b3;
+    box-shadow: none;
+    transition: 0.6s ease;
+}
   
     </style>
 </head>
@@ -47,7 +64,7 @@
 <body>
     <nav></nav>
     <div class="container">
-        <h3>Enter community name</h3>
+        <h3>Community name</h3>
         <input type="text" name="name" id="" maxlength="10">
         <h3>Description</h3>
         <form>
