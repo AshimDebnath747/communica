@@ -1,5 +1,9 @@
 const express = require("express");
+const {createServer} = require("http");
+const {Server} = require("socket.io")
 const app = express();
+const server = createServer(app);
+const io = new Server(server);
 const port = 3000;
 const mongoose = require("mongoose")
 const userRoute = require("./routes/user")
@@ -21,11 +25,17 @@ app.set("view engine","ejs")
 app.get("/",async(req,res)=>{
     res.render("home.ejs",{
         user : req.user,
-        allcommunity : await community.find({})
+        allCommunity : await community.find({})
     })
 })
 app.use("/user",userRoute);
-app.listen(port,()=>{
+
+
+//socket.io
+io.on('connection',(socket)=>{
+    console.log("user connected :",socket.id)
+})
+server.listen(port,()=>{
     console.log("server connected to port"+ port)
 })
 

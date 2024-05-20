@@ -11,8 +11,12 @@ const communitySchema = new mongoose.Schema({
     },
     members: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }]
+        ref: 'user'
+    }],
+    createdBy : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'user'
+    }
 });
 
 const community = mongoose.model('community', communitySchema);
