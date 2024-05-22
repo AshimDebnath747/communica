@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>create new community</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .container {
+            display: flexbox;
+            background-color: aquamarine;
+            height: 459px;
+            width: 425px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: block;
+            align-items: center;
+            justify-content: center;
+            transition: 0.7s ease; 
+             border-radius: 4%;
+        }
+        .container:hover{
+            box-shadow: 5px 5px 10px 10px rgba(0, 0, 0, 0.5);
+            transition: 0.7s ease; 
+        }
+
+        .container>*{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+        }
+        .container>input{
+            
+    height: 19px;
+    width: 215px;
+
+        }
+
+        .submit{
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 5px 10px 3px rgba(0, 0, 0, 0.5);
+}
+
+.submit:hover {
+    background-color: #0056b3;
+    box-shadow: none;
+    transition: 0.6s ease;
+}
+
+  
+    </style>
+</head>
+
+<body>
+    <nav></nav>
+    <div class="container">
+        <h3>Community name</h3>
+        <input type="text" name="name" id="" maxlength="10">
+        <h3>Description</h3>
+        <form>
+            <label for="limitedTextarea">Enter Text (alphabets and spaces only, max 50 characters):</label>
+            <textarea id="limitedTextarea" rows="4" cols="50" oninput="validateTextarea(this)" maxlength="50"></textarea>
+        </form>
+    
+        <script>
+            function validateTextarea(textarea) {
+                // Remove non-alphabetic characters except spaces
+                textarea.value = textarea.value.replace(/[^a-zA-Z\s]/g, '');
+            
+             // Limit the number of characters to 100
+             if (textarea.value.length > 100) {
+                textarea.value = textarea.value.substring(0, 100);
+            }
+            // Update character count
+            document.getElementById('charCount').textContent = textarea.value.length + "/100 characters";
+        }
+        </script>
+        <button class="submit">create</button>
+    </div>
+
+</body>
+
+</html>
