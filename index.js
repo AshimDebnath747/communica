@@ -7,6 +7,7 @@ const io = new Server(server);
 const port = 3000;
 const mongoose = require("mongoose")
 const userRoute = require("./routes/user")
+const communityRoute = require("./routes/community")
 const cookieParser = require("cookie-parser")
 const {validateTokenAndSaveUserDetails} = require("./middlewares/authentication");
 const community = require("./models/community");
@@ -29,7 +30,7 @@ app.get("/",async(req,res)=>{
     })
 })
 app.use("/user",userRoute);
-
+app.use("/community",communityRoute );
 
 //socket.io
 io.on('connection',(socket)=>{

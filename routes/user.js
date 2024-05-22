@@ -11,10 +11,10 @@ router.get("/signup",(req,res)=>{
     return res.render("signup");
 })
 router.post("/signup",async(req,res)=>{
-    const { userName , userEmail , gender , password } = req.body;
+    const { userName , UserEmail , gender , password } = req.body;
      await userModel.create({
         userName ,
-        userEmail,
+        UserEmail,
         gender,
         password,
      })
@@ -24,10 +24,12 @@ router.get("/login",(req,res)=>{
     res.render("login")
  })
  router.post("/login",async(req,res)=>{
-    const {email , password} = req.body;
+    const {UserEmail , password} = req.body;
+    console.log(UserEmail)
+    console.log(password)
     try{
-    const token = await User.matchUser(email,password)
-     
+    const token = await userModel.matchUser(UserEmail,password)
+     console.log("token: ", token)
     res.cookie("token",token).redirect("/");
     }
     catch(err){

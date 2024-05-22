@@ -6,14 +6,11 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema ({
     userName : {
         type: String,
-
     },
-    UserEmail :  {
+    UserEmail: {
         type : String,
-       
-        unique : true,
     },
-    gender : {
+    gender :   {
         type : String,
     } ,
     password : {
@@ -52,10 +49,10 @@ userSchema.pre("save",function(next){
    next()
     }
 })
-userSchema.static("matchUser",async function(email,password){
-    const user = await this.findOne({email});
-    if (!user) throw new Error("USER NOT FOUND!")
-  
+userSchema.static("matchUser",async function(UserEmail,password){
+    const user = await this.findOne({UserEmail});
+    console.log(JSON.stringify(user))
+    if (!user) console.log("user not found")
     const actualPassword = user.password ;
     const salt = user.salt;
     const givenPassword = createHmac("sha256",salt)

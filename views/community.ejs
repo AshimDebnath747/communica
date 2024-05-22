@@ -68,9 +68,9 @@
         <h3>Community name</h3>
         <input type="text" name="name" id="" maxlength="10">
         <h3>Description</h3>
-        <form>
+        <form method="post" action="/community">
             <label for="limitedTextarea">Enter Text (alphabets and spaces only, max 50 characters):</label>
-            <textarea id="limitedTextarea" rows="4" cols="50" oninput="validateTextarea(this)" maxlength="50"></textarea>
+            <textarea id="limitedTextarea" rows="4" cols="50" name="description" oninput="validateTextarea(this)" maxlength="50"></textarea>
         </form>
     
         <script>

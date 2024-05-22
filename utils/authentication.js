@@ -5,7 +5,7 @@ const secret = "Ashim@123";
 function tokenGenrator(user){
    const payload = {
     "id" : user._id,
-    "fullName" : user.fullName
+    "fullName" : user.userName
    }
    const token = JWT.sign(payload,secret,{
     expiresIn : "2h"
