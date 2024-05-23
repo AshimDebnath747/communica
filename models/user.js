@@ -51,8 +51,7 @@ userSchema.pre("save",function(next){
 })
 userSchema.static("matchUser",async function(UserEmail,password){
     const user = await this.findOne({UserEmail});
-    console.log(JSON.stringify(user))
-    if (!user) console.log("user not found")
+    if (!user) throw new Error("user not found")
     const actualPassword = user.password ;
     const salt = user.salt;
     const givenPassword = createHmac("sha256",salt)

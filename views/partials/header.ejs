@@ -1,0 +1,11 @@
+<nav>
+    <a href="">Communica</a>
+<% if (!user) { %>
+ <a href="/user/login">login</a>
+ <p id="danger">you have to login to create and join communities</p>
+<% } else {%>
+  <a href=""><%= user.fullName %></a>
+  <p>Create and Join communities with COMMUNICA</p>
+   <% } %>
+    
+</nav>

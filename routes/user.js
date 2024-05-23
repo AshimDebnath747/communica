@@ -3,9 +3,11 @@ const userModel = require("../models/user")
 const router = Router();
 
 
+router.get("/",async(req,res)=>{
+    return res.render("profile",{
+       user : req.user,
 
-router.get("/",(req,res)=>{
-    return res.render("profile");
+    });
 })
 router.get("/signup",(req,res)=>{
     return res.render("signup");
@@ -25,11 +27,8 @@ router.get("/login",(req,res)=>{
  })
  router.post("/login",async(req,res)=>{
     const {UserEmail , password} = req.body;
-    console.log(UserEmail)
-    console.log(password)
     try{
     const token = await userModel.matchUser(UserEmail,password)
-     console.log("token: ", token)
     res.cookie("token",token).redirect("/");
     }
     catch(err){
