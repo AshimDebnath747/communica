@@ -7,9 +7,15 @@ router.get("/",(req,res)=>{
     user : req.user
    });
 })
-router.post("/",(req,res)=>{
+router.post("/",async(req,res)=>{
     const {name , description} = req.body;
-    
+
+    await communityModel.create({
+        name : name,
+        description : description,
+        createdBy : req.user.id
+    })
+    res.redirect("/")
 })
 
 module.exports = router;

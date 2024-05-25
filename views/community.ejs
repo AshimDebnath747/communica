@@ -64,13 +64,14 @@
 
 <body>
     <%- include("./partials/header.ejs") %>
+    <form method="post" action="/community">
     <div class="container">
         <h3>Community name</h3>
         <input type="text" name="name" id="" maxlength="10">
         <h3>Description</h3>
-        <form method="post" action="/community">
             <label for="limitedTextarea">Enter Text (alphabets and spaces only, max 50 characters):</label>
             <textarea id="limitedTextarea" rows="4" cols="50" name="description" oninput="validateTextarea(this)" maxlength="50"></textarea>
+            <button class="submit">create</button>
         </form>
     
         <script>
@@ -86,7 +87,6 @@
             document.getElementById('charCount').textContent = textarea.value.length + "/100 characters";
         }
         </script>
-        <button class="submit">create</button>
     </div>
 
 </body>
