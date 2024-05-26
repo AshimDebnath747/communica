@@ -12,10 +12,16 @@
    <div>
     <ul>
      <% allCommunity.forEach(community => { %>
+      <div>
+        <img src="" alt="">
+      </div>
         <a href=""><%= community.name %></a>
+      
    <%  }); %>
     </ul>
    </div>
+
+   <img src="">
    <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io();

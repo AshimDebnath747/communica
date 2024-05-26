@@ -28,7 +28,7 @@
     <div id="container">
         <h3 id="login">Login</h3>
         <!-- input area -->
-        <form method="post" action="/user/signup">
+        <form method="post" action="/user/signup" enctype="multipart/form-data">
         <p id="username" >username</p>
         <input type="text" placeholder="Enter username" id="nameinput" name="userName">
         <p id="userEmail" >useremail</p>
@@ -36,7 +36,8 @@
         <p>Enter your gender</p>
         <input type="radio" name="gender" value="male"> Male
 <input type="radio" name="gender" value="female"> Female
-
+<p>Enter your profile picture</p>
+<input type="file" name="profileImage" />
         <p id="pass">password</p>
         <input type="password" placeholder="Enter password" id="passinput" name="password">
         <!-- end of input area -->

@@ -11,6 +11,7 @@ const communityRoute = require("./routes/community")
 const cookieParser = require("cookie-parser")
 const {validateTokenAndSaveUserDetails} = require("./middlewares/authentication");
 const community = require("./models/community");
+const user = require("./models/user")
 
 //conncting yo server
  mongoose.connect("mongodb://127.0.0.1:27017/communica")
@@ -20,12 +21,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended : false}))
 app.use(cookieParser())
 app.use(validateTokenAndSaveUserDetails("token"))
+app.use(express.static("./public"))
 //set view engine to ejs
 app.set("view engine","ejs")
 //home page
 app.get("/",async(req,res)=>{
     res.render("home.ejs",{
-        user : req.user,
+       user : req.user,
         allCommunity : await community.find({})
     })
 })

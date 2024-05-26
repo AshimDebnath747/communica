@@ -1,5 +1,18 @@
 const {Router} = require("express");
 const userModel = require("../models/user")
+const communityModel = require("../models/community")
+const multer  = require('multer')
+const path = require("path")
+const Storage = multer.diskStorage({
+    destination : function(req,file,cb){
+        cb(null,'./public/uploads/')
+    },
+    filename: function(req,file,cb){
+        const fileName = `${Date.now()} - ${file.originalname}`;
+        cb(null,fileName)
+    }
+})
+const upload = multer({storage : Storage})
 const router = Router();
 
 
@@ -12,12 +25,14 @@ router.get("/",async(req,res)=>{
 router.get("/signup",(req,res)=>{
     return res.render("signup");
 })
-router.post("/signup",async(req,res)=>{
+router.post("/signup",upload.single("profileImage"),async(req,res)=>{
+    const profileImage = `/uploads/${req.file.filename}`
     const { userName , UserEmail , gender , password } = req.body;
      await userModel.create({
         userName ,
         UserEmail,
         gender,
+        profileImage,
         password,
      })
      return res.redirect("/");
@@ -37,5 +52,11 @@ router.get("/login",(req,res)=>{
      })
     }
 })
-    
+router.get("/:id",async(req,res)=>{
+    res.render("profile",{
+        userCommunity : await communityModel.find({
+            createdBy : req.params.id
+        })
+    })
+    })
 module.exports = router;

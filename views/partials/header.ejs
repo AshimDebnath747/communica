@@ -4,8 +4,14 @@
  <a href="/user/login">login</a>
  <p id="danger">you have to login to create and join communities</p>
 <% } else {%>
-  <a href=""><%= user.fullName %></a>
+  <a href="user/<%= user.id %>"><%= user.fullName %></a>
+  <img src="<%= user.profileImage %>" alt="">
   <p>Create and Join communities with COMMUNICA</p>
    <% } %>
     
 </nav>
+<style>
+  img{
+     width: 100px;
+  }
+</style>

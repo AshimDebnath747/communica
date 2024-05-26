@@ -21,10 +21,10 @@ const userSchema = new Schema ({
         type : String,
         default : "/images/default.jpg"
     },
-    community :{
+    community :[{
       type : mongoose.Schema.Types.ObjectId,
       ref : "community",
-    },
+    }],
     role : {
         type : String,
         enum : ["USER","ADMIN"],
