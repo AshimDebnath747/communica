@@ -15,7 +15,6 @@ const communitySchema = new mongoose.Schema({
     }],
     image :{
         type : String,
-
     },
     createdBy : {
         type : mongoose.Schema.Types.ObjectId,

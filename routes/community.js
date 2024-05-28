@@ -16,7 +16,9 @@ router.post("/",async(req,res)=>{
         createdBy : req.user.id
     })
 
-    res.redirect("/")
+    return res.redirect("/")
 })
-
+router.get("/search",(req,res)=>{
+    res.end("under development")
+})
 module.exports = router;

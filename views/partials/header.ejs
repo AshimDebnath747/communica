@@ -1,17 +1,88 @@
 <nav>
-    <a href="">Communica</a>
+    <a href="" id="logo">Communica</a>
+    <form action="/community/search" method="get" id="searchForm">
+      <input id="search" type="text" placeholder="search communities">
+      <button id="searchButton">search</button>
+    </form>
 <% if (!user) { %>
- <a href="/user/login">login</a>
- <p id="danger">you have to login to create and join communities</p>
+ <a href="/user/login" id="login">login</a>
 <% } else {%>
-  <a href="user/<%= user.id %>"><%= user.fullName %></a>
+  <a href="profile/<%= user.id %>"><%= user.fullName %></a>
   <img src="<%= user.profileImage %>" alt="">
-  <p>Create and Join communities with COMMUNICA</p>
    <% } %>
     
 </nav>
+<% if (!user) { %>
+  <div id="triangle"></div>
+  <p id="danger">you have to login to create and join communities</p>
+ <% } else {%>
+  <p>Create and Join communities with COMMUNICA</p>
+    <% } %>
+
+
+
 <style>
+  body{
+    margin: 0px;
+    padding: 0px;
+  }
   img{
      width: 100px;
   }
+  nav{
+    display: flex;
+    flex-direction: row;
+    background-color: blueviolet;
+  }
+ #logo{
+    padding: 10px;
+    margin-right: 20%;
+    text-decoration: none;
+    color: black;
+ }
+ #logo:hover{
+  background-color: rgb(199, 140, 255);
+ }
+ #searchForm{
+  padding: 10px;
+ }
+#login{
+  margin-left: 40%;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(80, 0, 155);
+}
+#login:hover{
+  background-color:rgb(199, 140, 255) ;
+}
+#searchForm{
+  display: flex;
+}
+#searchButton{
+  background-color: black;
+  color: white;
+  border: none;
+  margin-left: 3px;
+}
+#searchButton:hover{
+  background-color: rgb(61, 58, 58);
+}
+#danger{
+  position: absolute;
+  left: 69%;
+  background-color: rgb(182, 182, 182);
+  padding: 4px;
+
+}
+#triangle{
+ 
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  left: 88%;
+  border-right: 30px solid transparent;
+  border-left: 30px solid transparent;
+  border-bottom: 30px solid  rgb(182, 182, 182); 
+}
 </style>

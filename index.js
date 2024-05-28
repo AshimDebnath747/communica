@@ -4,18 +4,15 @@ const {Server} = require("socket.io")
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
+const connectDB = require("./db")
 const port = 3000;
-const mongoose = require("mongoose")
 const userRoute = require("./routes/user")
 const communityRoute = require("./routes/community")
 const cookieParser = require("cookie-parser")
 const {validateTokenAndSaveUserDetails} = require("./middlewares/authentication");
 const community = require("./models/community");
-const user = require("./models/user")
-
-//conncting yo server
- mongoose.connect("mongodb://127.0.0.1:27017/communica")
-.then(()=>console.log("connected to mongodb"))
+//conncting your server
+ connectDB();
 
 app.use(express.json())
 app.use(express.urlencoded({ extended : false}))
@@ -26,11 +23,19 @@ app.use(express.static("./public"))
 app.set("view engine","ejs")
 //home page
 app.get("/",async(req,res)=>{
-    res.render("home.ejs",{
+     return res.render("home.ejs",{
        user : req.user,
         allCommunity : await community.find({})
     })
 })
+
+app.get("/profile/:id",async(req,res)=>{
+    return res.render("profile",{
+        userCommunity : await community.find({
+            createdBy : req.params.id
+        })
+    })
+    })
 app.use("/user",userRoute);
 app.use("/community",communityRoute );
 
