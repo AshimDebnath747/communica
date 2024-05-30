@@ -10,7 +10,6 @@ function validateTokenAndSaveUserDetails(token){
         try{
     const payload = validateToken(cookie)
     req.user = payload;
-    console.log(req.user)
     }
     catch(err){
        return next()

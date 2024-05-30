@@ -44,6 +44,9 @@ router.get("/login",(req,res)=>{
      })
     }
 })
+router.get("/logout",(req,res)=>{
+    return res.cookie("token","").redirect("/");
 
+})
    
 module.exports = router;

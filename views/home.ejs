@@ -15,20 +15,12 @@
       <div>
         <img src="" alt="">
       </div>
-        <a href=""><%= community.name %></a>
+        <a href="/community/chat/<%= community._id %>"><%= community.name %></a>
       
    <%  }); %>
     </ul>
    </div>
 
    <img src="">
-   <script src="/socket.io/socket.io.js"></script>
-  <script>
-    var socket = io();
-
-    socket.on("connect",()=>{
-      console.log("connected");
-    })
-</script>
 </body>
 </html>

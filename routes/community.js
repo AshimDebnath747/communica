@@ -21,4 +21,19 @@ router.post("/",async(req,res)=>{
 router.get("/search",(req,res)=>{
     res.end("under development")
 })
+router.get("/chat/:id",async(req,res)=>{
+    const communityId = req.params.id
+   
+     res.render("chat.ejs",{
+      chatCommunity : await communityModel.findOne({ _id : communityId }),
+      user : req.user,
+   })
+})
+router.get("/info/:id",async(req,res)=>{
+    const id = req.params.id
+    res.render("communityInfo",{
+        user : req.user,
+        community : await communityModel.findById({_id : id})
+    })
+})
 module.exports = router;

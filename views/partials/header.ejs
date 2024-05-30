@@ -7,8 +7,11 @@
 <% if (!user) { %>
  <a href="/user/login" id="login">login</a>
 <% } else {%>
-  <a href="profile/<%= user.id %>"><%= user.fullName %></a>
-  <img src="<%= user.profileImage %>" alt="">
+  <div id="userDiv">
+  <a href="profile/<%= user.id %>" id="user"><%= user.fullName %></a>
+  <img src="<%= user.profileImage %>" alt="" id="profileImage">
+  <a href="/user/logout" id="logout">logout</a>
+</div>
    <% } %>
     
 </nav>
@@ -16,7 +19,7 @@
   <div id="triangle"></div>
   <p id="danger">you have to login to create and join communities</p>
  <% } else {%>
-  <p>Create and Join communities with COMMUNICA</p>
+  
     <% } %>
 
 
@@ -84,5 +87,27 @@
   border-right: 30px solid transparent;
   border-left: 30px solid transparent;
   border-bottom: 30px solid  rgb(182, 182, 182); 
+}
+#profileImage{
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  margin-top : 5px;
+
+}
+#user{
+padding: 3px;
+margin-bottom: 4px;
+color: aliceblue;
+}
+#userDiv{
+background-color: rgb(80, 0, 155);
+margin-left: 30%;
+}
+#logout{
+  color: aliceblue;
+  padding: 5px;
+  margin-left: 4px;
+  
 }
 </style>
