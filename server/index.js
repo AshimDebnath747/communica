@@ -5,7 +5,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server,{
 });
-const connectDB = require("./db")
+const connectDB = require("./utils/db");
 const port = 3000;
 const userRoute = require("./routes/user")
 const communityRoute = require("./routes/community")

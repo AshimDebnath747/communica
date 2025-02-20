@@ -1,6 +1,6 @@
 const {Router} = require("express");
-const userModel = require("../models/user")
-const communityModel = require("../models/community")
+const userModel = require("../models/user.js")
+const communityModel = require("../models/community.js")
 const multer  = require('multer')
 const Storage = multer.diskStorage({
     destination : function(req,file,cb){
