@@ -1,4 +1,4 @@
-const {validateToken} = require("../utils/authentication")
+const {validateToken} = require("../server/utils/authentication")
 const JWT = require("jsonwebtoken")
 
 function validateTokenAndSaveUserDetails(token){
